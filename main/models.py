@@ -17,7 +17,7 @@ class Car(models.Model):
 # Details.
 class Detail(models.Model):
     '''Model for car details.'''
-    car = models.ForeignKey(to=Car, on_delete=models.CASCADE)
+    car = models.ForeignKey(to=Car, on_delete=models.CASCADE, related_name='detail')
     car_type = models.CharField(max_length=50, choices=choices.CAR_TYPES, default=choices.CAR_TYPES[0][0])
     exterior_type = models.CharField(max_length=50, choices=choices.EXTERIOR_TYPES, default=choices.EXTERIOR_TYPES[0][0])
     vin = models.CharField(max_length=128)
@@ -43,7 +43,7 @@ class Detail(models.Model):
 
 class Feature(models.Model):
     '''Model for car feature.'''
-    car = models.ForeignKey(to=Car, on_delete=models.CASCADE)
+    car = models.ForeignKey(to=Car, on_delete=models.CASCADE, related_name='feature')
     awd_4wd = models.BooleanField(default=False, verbose_name="AWD/4WD Availability")
     navigation_system = models.BooleanField(default=False, verbose_name="Navigation System Availability")
     leather_seats = models.BooleanField(default=False, verbose_name="Leather Seats Availability")
