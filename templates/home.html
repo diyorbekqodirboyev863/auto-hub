@@ -1,0 +1,6 @@
+<h1>MODELS</h1>
+<ul>
+    {% for car in cars %}
+        <li><a href="{% url 'car_details' car.id %}">{{ car.make }} {{ car.model }}</a></li>
+    {% endfor %}
+</ul>

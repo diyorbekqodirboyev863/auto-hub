@@ -1,0 +1,208 @@
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
+<div class="container">
+    <h1 class="display-4 bg-primary text-center text-white p-4">{{ car.make }} {{ car.model }}</h1>
+    <div class="row">
+        <div class="col-7">
+            <div id="carouselExampleAutoplaying" class="carousel slide" data-bs-ride="carousel">
+                <div class="carousel-inner">
+                    {% for image in car.images.all %}
+                        <div class="carousel-item {% if forloop.first %}active{% endif %}">
+                            <img src="{{ image.image.url }}" class="d-block w-100" alt="{{ car.model }}">
+                        </div>
+                    {% endfor %}
+                </div>
+                <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleAutoplaying"
+                    data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Previous</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleAutoplaying"
+                    data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Next</span>
+                </button>
+            </div>
+        </div>
+        <div class="col-5">
+            <div class="d-grid">
+                <h5 class="text-uppercase display-6">Description</h5>
+            <p>{{ detail.description }}</p>
+            <a href="#" class="btn btn-primary">Contact Us</a>
+            </div>
+        </div>
+    </div>
+    <hr>
+    <div class="row">
+        <div class="col-6">
+            <h5 class="text-uppercase display-6">Details</h5>
+            <table class="table">
+                <tr>
+                    <th scope="row">Type</th>
+                    <td>{{ detail.car_type }}</td>
+                </tr>
+                <tr>
+                    <th scope="row">Exterior Type</th>
+                    <td>{{ detail.exterior_type }}</td>
+                </tr>
+                <tr>
+                    <th scope="row">VIN</th>
+                    <td>{{ detail.vin }}</td>
+                </tr>
+                <tr>
+                    <th scope="row">Mileage</th>
+                    <td>{{ detail.miles }}</td>
+                </tr>
+                <tr>
+                    <th scope="row">Interior Type</th>
+                    <td>{{ detail.interior_type }}</td>
+                </tr>
+                <tr>
+                    <th scope="row">Stock</th>
+                    <td>{{ detail.stock }}</td>
+                </tr>
+                <tr>
+                    <th scope="row">Drive Type</th>
+                    <td>{{ detail.drive_type }}</td>
+                </tr>
+                <tr>
+                    <th scope="row">Engine Type</th>
+                    <td>{{ detail.engine_type }}</td>
+                </tr>
+                <tr>
+                    <th scope="row">Transmission Type</th>
+                    <td>{{ detail.transmission_type }}</td>
+                </tr>
+                <tr>
+                    <th scope="row">Color</th>
+                    <td>{{ detail.color }}</td>
+                </tr>
+                <tr>
+                    <th scope="row">MPG</th>
+                    <td>{{ detail.mpg }}</td>
+                </tr>
+                <tr>
+                    <th scope="row">Price</th>
+                    <td>${{ detail.price }}</td>
+                </tr>
+                <tr>
+                    <th scope="row">Year</th>
+                    <td>{{ detail.year }}</td>
+                </tr>
+            </table>
+        </div>
+        <div class="col-6">
+            <h5 class="text-uppercase display-6">Features</h5>
+            <ul>
+                {% if feature.awd_4wd %}
+                    <li>AWD/4WD Availability</li>
+                {% endif %}
+                {% if feature.navigation_system %}
+                    <li>Navigation System Availability</li>
+                {% endif %}
+                {% if feature.leather_seats %}
+                    <li>Leather Seats Availability</li>
+                {% endif %}
+                {% if feature.sunroof_moonroof %}
+                    <li>Sunroof/Moonroof Availability</li>
+                {% endif %}
+                {% if feature.panoramic_roof %}
+                    <li>Panoramic Roof Availability</li>
+                {% endif %}
+                {% if feature.third_row_seating %}
+                    <li>Third-Row Seating Availability</li>
+                {% endif %}
+                {% if feature.premium_package %}
+                    <li>Premium Package Availability</li>
+                {% endif %}
+                {% if feature.oversized_wheels %}
+                    <li>Oversized Wheels (20-inch+) Availability</li>
+                {% endif %}
+                {% if feature.four_doors %}
+                    <li>Four Doors Availability</li>
+                {% endif %}
+                {% if feature.android_auto %}
+                    <li>Android Auto Availability</li>
+                {% endif %}
+                {% if feature.apple_carplay %}
+                    <li>Apple CarPlay Availability</li>
+                {% endif %}
+                {% if feature.auto_climate_control %}
+                    <li>Auto Climate Control Availability</li>
+                {% endif %}
+                {% if feature.automatic_headlights %}
+                    <li>Automatic Headlights Availability</li>
+                {% endif %}
+                {% if feature.blind_spot_monitor %}
+                    <li>Blind Spot Monitor Availability</li>
+                {% endif %}
+                {% if feature.bluetooth %}
+                    <li>Bluetooth Availability</li>
+                {% endif %}
+                {% if feature.collision_avoidance %}
+                    <li>Collision Avoidance Availability</li>
+                {% endif %}
+                {% if feature.compact_disc_player %}
+                    <li>Compact Disc Player Availability</li>
+                {% endif %}
+                {% if feature.cruise_control %}
+                    <li>Cruise Control Availability</li>
+                {% endif %}
+                {% if feature.electric_folding_rear_seats %}
+                    <li>Electric Folding Rear Seats Availability</li>
+                {% endif %}
+                {% if feature.foglights %}
+                    <li>Foglights Availability</li>
+                {% endif %}
+                {% if feature.heated_mirrors %}
+                    <li>Heated Mirrors Availability</li>
+                {% endif %}
+                {% if feature.heated_seats %}
+                    <li>Heated Seats Availability</li>
+                {% endif %}
+                {% if feature.heated_steering_wheel %}
+                    <li>Heated Steering Wheel Availability</li>
+                {% endif %}
+                {% if feature.heated_cooled_seats %}
+                    <li>Heated/Cooled Seats Availability</li>
+                {% endif %}
+                {% if feature.lane_departure_warning %}
+                    <li>Lane Departure Warning Availability</li>
+                {% endif %}
+                {% if feature.led_headlights %}
+                    <li>LED Headlights Availability</li>
+                {% endif %}
+                {% if feature.luggage_rack %}
+                    <li>Luggage Rack Availability</li>
+                {% endif %}
+                {% if feature.power_door_locks %}
+                    <li>Power Door Locks Availability</li>
+                {% endif %}
+                {% if feature.power_driver_seat %}
+                    <li>Power Driver Seat Availability</li>
+                {% endif %}
+                {% if feature.power_mirrors %}
+                    <li>Power Mirrors Availability</li>
+                {% endif %}
+                {% if feature.power_passenger_seat %}
+                    <li>Power Passenger Seat Availability</li>
+                {% endif %}
+                {% if feature.power_tilt_wheel %}
+                    <li>Power Tilt Wheel Availability</li>
+                {% endif %}
+                {% if feature.power_windows %}
+                    <li>Power Windows Availability</li>
+                {% endif %}
+                {% if feature.premium_sound_system %}
+                    <li>Premium Sound System Availability</li>
+                {% endif %}
+                {% if feature.privacy_glass %}
+                    <li>Privacy Glass Availability</li>
+                {% endif %}
+                {% if feature.push_button_start %}
+                    <li>Push Button Start Availability</li>
+                {% endif %}
+            </ul>
+        </div>
+    </div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>

@@ -33,6 +33,11 @@ class Detail(models.Model):
     description = models.TextField(blank=True, null=True)
     year = models.IntegerField(choices=choices.YEAR_CHOICES)
 
+    def save(self, *args, **kwargs):
+        # Convert the model field to uppercase before saving.
+        self.color = self.color.title()
+        super().save(*args, **kwargs)
+
     def __str__(self):
         return f'{self.car_type} - {self.year}'
 
@@ -75,6 +80,9 @@ class Feature(models.Model):
     premium_sound_system = models.BooleanField(default=False, verbose_name="Premium Sound System Availability")
     privacy_glass = models.BooleanField(default=False, verbose_name="Privacy Glass Availability")
     push_button_start = models.BooleanField(default=False, verbose_name="Push Button Start Availability")
+
+    def __str__(self):
+        return self.car.model
 
 
 # Images.
